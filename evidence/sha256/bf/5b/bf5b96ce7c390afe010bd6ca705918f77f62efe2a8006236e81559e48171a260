@@ -1,0 +1,15 @@
+{
+  "artifact": "0746f5f8d406af344fd547f1c8daa5f5c33dbc293bb8d6a16d80b4bb88f59372",
+  "refuse_url": "https://files.pythonhosted.org/packages/aa/c6/d1ddf4abb55e93cebc4f2ed8b5d6dbad109ecb8d63748dd2b20ab5e57ebe/psutil-7.2.2.tar.gz",
+  "members": [
+    "216a5f9b61b9c867ddb3b4f3ce658242ba4a626757ed3a2a7f8420f1d7a6a635",
+    "510303b5ee24fa738aea8e2be19727ed26a33a9cf2e1c45d116e62cb55064d19",
+    "525f1603ffe60eecb33490242a29886770f448a795ebb448f4999851235eef4a",
+    "82a06da6581fe0b5fa7716893ee46fb2415c6998a191f462408218b9d8a3350b"
+  ],
+  "filtered_out": 224,
+  "withhold": {
+    "project": "psutil",
+    "version": "7.2.2"
+  }
+}

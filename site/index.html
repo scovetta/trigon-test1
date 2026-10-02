@@ -25,20 +25,26 @@
 <section class="intro" aria-labelledby="title">
 <p class="kicker">github.com/scovetta/trigon-test1</p>
 <h1 id="title">Rebuild results</h1>
-<p class="lede">Trigon rebuilds published packages from the source they claim to come from, compares each rebuild with the artifact the registry serves, and signs what it finds. This repository holds 11 records about 11 artifacts of 11 packages, as of 2026-10-02 13:14 UTC.</p>
+<p class="lede">Trigon rebuilds published packages from the source they claim to come from, compares each rebuild with the artifact the registry serves, and signs what it finds. This repository holds 12 records about 12 artifacts of 12 packages, as of 2026-10-02 14:30 UTC.</p>
 <p>Every result is a record signed by the operator's attestation key and logged in an append-only log anyone can verify. These pages are generated from that log, and prove nothing on their own: whoever can push to this repository could change a page, but not a record or the log. To rely on a result, check it with the <code>trigon</code> command-line tool, as <a href="#verify">Verify it yourself</a> shows.</p>
 </section>
 <section class="sec" id="standing" aria-labelledby="standing-title">
 <div class="sec-head"><h2 id="standing-title">Where things stand</h2><p>Each artifact once, by what the log says of it now: a correction or a withdrawal replaces what it supersedes.</p></div>
 <div class="sec-body">
 <ul class="tally">
-<li><span class="n zero">0</span><span class="oc bad"><span class="glyph" aria-hidden="true">&#x2716;&#xFE0E;</span><span>divergent</span></span></li>
+<li><span class="n">1</span><span class="oc bad"><span class="glyph" aria-hidden="true">&#x2716;&#xFE0E;</span><span>divergent</span></span></li>
 <li><span class="n zero">0</span><span class="oc warn"><span class="glyph" aria-hidden="true">&#x2298;</span><span>void</span></span></li>
 <li><span class="n zero">0</span><span class="oc warn"><span class="glyph" aria-hidden="true">&#x25D0;</span><span>normalized_<wbr />with_<wbr />caveats</span></span></li>
 <li><span class="n">8</span><span class="oc ok"><span class="glyph" aria-hidden="true">&#x2714;&#xFE0E;</span><span>normalized</span></span></li>
 <li><span class="n">3</span><span class="oc ok"><span class="glyph" aria-hidden="true">&#x2714;&#xFE0E;</span><span>exact</span></span></li>
 </ul>
-<p class="muted">No artifact here is divergent now.</p>
+<div class="table-scroll"><table class="data">
+<caption>Divergent now: each a claim that a published artifact does not match its source, with where to dispute it</caption>
+<thead><tr><th scope="col">package</th><th scope="col">version</th><th scope="col">record</th><th scope="col">dispute</th></tr></thead>
+<tbody>
+<tr><th scope="row"><a href="pkg/pypi/psutil/index.html">psutil</a></th><td>7.2.2</td><td><a href="r/b5/3d/b53d0d1e396bd74028087fee9e6159bac5af4ec650ae1c6f3395df1f393bc97d.html"><code>b53d0d1e396b</code></a></td><td><a href="https://github.com/scovetta/trigon-test1/issues" rel="nofollow"><code class="long">https://github.com/scovetta/trigon-test1/issues</code></a></td></tr>
+</tbody>
+</table></div>
 </div>
 </section>
 <section class="sec" id="packages" aria-labelledby="packages-title">
@@ -47,6 +53,7 @@
 <div class="table-scroll"><table class="data">
 <thead><tr><th scope="col">package</th><th scope="col">ecosystem</th><th scope="col">newest version</th><th scope="col">its result now</th><th scope="col" class="num">versions</th><th scope="col">updated</th></tr></thead>
 <tbody>
+<tr><th scope="row"><a href="pkg/pypi/psutil/index.html">psutil</a></th><td>pypi</td><td>7.2.2</td><td><span class="oc bad"><span class="glyph" aria-hidden="true">&#x2716;&#xFE0E;</span>divergent</span></td><td class="num">1</td><td class="when"><time datetime="2026-10-02T14:30:58Z">2026-10-02</time></td></tr>
 <tr><th scope="row"><a href="pkg/npm/pump/index.html">pump</a></th><td>npm</td><td>3.0.4</td><td><span class="oc ok"><span class="glyph" aria-hidden="true">&#x2714;&#xFE0E;</span>exact</span></td><td class="num">1</td><td class="when"><time datetime="2026-10-02T13:14:48Z">2026-10-02</time></td></tr>
 <tr><th scope="row"><a href="pkg/npm/end-of-stream/index.html">end-of-stream</a></th><td>npm</td><td>1.4.5</td><td><span class="oc ok"><span class="glyph" aria-hidden="true">&#x2714;&#xFE0E;</span>exact</span></td><td class="num">1</td><td class="when"><time datetime="2026-10-02T13:13:32Z">2026-10-02</time></td></tr>
 <tr><th scope="row"><a href="pkg/npm/graceful-fs/index.html">graceful-fs</a></th><td>npm</td><td>4.2.11</td><td><span class="oc ok"><span class="glyph" aria-hidden="true">&#x2714;&#xFE0E;</span>exact</span></td><td class="num">1</td><td class="when"><time datetime="2026-10-02T13:12:01Z">2026-10-02</time></td></tr>
@@ -68,6 +75,7 @@
 <div class="table-scroll"><table class="data">
 <thead><tr><th scope="col">logged</th><th scope="col">package</th><th scope="col">version</th><th scope="col">result</th><th scope="col">record</th></tr></thead>
 <tbody>
+<tr><td class="when"><time datetime="2026-10-02T14:30:58Z">2026-10-02</time></td><th scope="row"><a href="pkg/pypi/psutil/index.html">psutil</a></th><td>7.2.2</td><td><span class="oc bad"><span class="glyph" aria-hidden="true">&#x2716;&#xFE0E;</span>divergent</span></td><td><a href="r/b5/3d/b53d0d1e396bd74028087fee9e6159bac5af4ec650ae1c6f3395df1f393bc97d.html"><code>b53d0d1e396b</code></a></td></tr>
 <tr><td class="when"><time datetime="2026-10-02T13:14:48Z">2026-10-02</time></td><th scope="row"><a href="pkg/npm/pump/index.html">pump</a></th><td>3.0.4</td><td><span class="oc ok"><span class="glyph" aria-hidden="true">&#x2714;&#xFE0E;</span>exact</span></td><td><a href="r/c1/d5/c1d5afa124c08804a8bf9b3caee2de351a3eb920dee72af6152bbed5357c763b.html"><code>c1d5afa124c0</code></a></td></tr>
 <tr><td class="when"><time datetime="2026-10-02T13:13:32Z">2026-10-02</time></td><th scope="row"><a href="pkg/npm/end-of-stream/index.html">end-of-stream</a></th><td>1.4.5</td><td><span class="oc ok"><span class="glyph" aria-hidden="true">&#x2714;&#xFE0E;</span>exact</span></td><td><a href="r/e6/a4/e6a419d6522d9c3c7d211aa143998ed179e9b4886ddfa9865b84b9ea1197c535.html"><code>e6a419d6522d</code></a></td></tr>
 <tr><td class="when"><time datetime="2026-10-02T13:12:01Z">2026-10-02</time></td><th scope="row"><a href="pkg/npm/graceful-fs/index.html">graceful-fs</a></th><td>4.2.11</td><td><span class="oc ok"><span class="glyph" aria-hidden="true">&#x2714;&#xFE0E;</span>exact</span></td><td><a href="r/86/1a/861a3a7b2a9e0d3de36fd62c2b6a8d3275d461e1d336d5cbf93a594d895a4283.html"><code>861a3a7b2a9e</code></a></td></tr>
@@ -91,10 +99,10 @@
       --log-key &#39;github.com/scovetta/trigon-test1+01f5e199+AYceSnUTY0/UYiJS0JyqyJfXEHkcW1QB5/+YxfBR5BVT&#39; \
       --attestation-key 51473006e194c378a2452f82499ab779315ba698a81bf46e3c89df64e49a9259
 <span class="t-mut">$ </span>trigon evidence sync --source trigon-test1
-<span class="t-mut">$ </span>trigon lookup pkg:npm/pump@3.0.4
+<span class="t-mut">$ </span>trigon lookup pkg:pypi/psutil@7.2.2
 <span class="t-mut">$ </span>trigon lookup ./the-artifact-you-downloaded.tgz</pre></div></figure>
 <div class="prose"><p>Every answer names the checkpoint it was given from. When these pages were generated, the log was at</p></div>
-<figure class="term"><div class="term-box"><div class="term-bar"><span>the checkpoint</span></div><pre tabindex="0">checkpoint github.com/scovetta/trigon-test1 11 3YBJEStRAB7UKu5r61u43HUvnr6xQr1JfO+4j3BjOx4=</pre></div></figure>
+<figure class="term"><div class="term-box"><div class="term-bar"><span>the checkpoint</span></div><pre tabindex="0">checkpoint github.com/scovetta/trigon-test1 12 /BSLie8yiCj4z4l94ACjqItZDDVBXgNJADWeDDiABd0=</pre></div></figure>
 <div class="prose"><p>A line with the same size and another root, from anyone, is proof that the log was rewritten. A record's page has the command that would falsify it, which re-derives the comparison from the two artifacts.</p></div>
 </div>
 </section>
@@ -103,8 +111,8 @@
 <div class="sec-body">
 <dl class="fields">
 <dt>origin</dt><dd><code class="long">github.com/scovetta/trigon-test1</code></dd>
-<dt>checkpoint</dt><dd>11 leaves, root <code class="long">3YBJEStRAB7UKu5r61u43HUvnr6xQr1JfO+4j3BjOx4=</code>: <a href="log/checkpoint">log/checkpoint</a></dd>
-<dt>newest leaf</dt><dd>2026-10-02T13:14:48Z</dd>
+<dt>checkpoint</dt><dd>12 leaves, root <code class="long">/BSLie8yiCj4z4l94ACjqItZDDVBXgNJADWeDDiABd0=</code>: <a href="log/checkpoint">log/checkpoint</a></dd>
+<dt>newest leaf</dt><dd>2026-10-02T14:30:58Z</dd>
 <dt>log key</dt><dd><code class="long">github.com/scovetta/trigon-test1+01f5e199+AYceSnUTY0/UYiJS0JyqyJfXEHkcW1QB5/+YxfBR5BVT</code> (<a href="keys/log.vkey">keys/log.vkey</a>)</dd>
 <dt>attestation key</dt><dd>Ed25519 <code class="long">51473006e194c378a2452f82499ab779315ba698a81bf46e3c89df64e49a9259</code>, key id <code>ca88cbc13f71123f</code> (<a href="keys/attestation.pub">keys/attestation.pub</a>)</dd>
 </dl>

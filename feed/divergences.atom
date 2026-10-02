@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <id>ni:///sha-256;VjTmJJoHoST4YCOTBBHzRhAQC7LM_T6d0iIjEn28FkM</id>
+  <title>Trigon divergences: github.com/scovetta/trigon-test1</title>
+  <subtitle>The most recent 200 divergences published to this evidence repository, newest first. Each is a claim that a package does not match its source, with where to dispute it; the log holds every one, and this feed is regenerated from it.</subtitle>
+  <updated>2026-10-02T14:30:58Z</updated>
+  <author><name>trigon publish</name></author>
+  <generator>trigon</generator>
+  <link rel="self" href="divergences.atom"/>
+  <entry>
+    <id>ni:///sha-256;tT0NHjlr10AoCH_unmFZusWvTsZQrhxvM5XfHzk7yX0</id>
+    <title>divergent: pkg:pypi/psutil@7.2.2</title>
+    <published>2026-10-02T14:30:58Z</published>
+    <updated>2026-10-02T14:30:58Z</updated>
+    <link rel="alternate" type="application/json" href="../records/b5/3d/b53d0d1e396bd74028087fee9e6159bac5af4ec650ae1c6f3395df1f393bc97d.json"/>
+    <link rel="related" href="https://github.com/scovetta/trigon-test1/issues" title="Where to dispute it"/>
+    <category term="divergent"/>
+    <content type="text">Trigon rebuilt pkg:pypi/psutil@7.2.2 from its source, and the rebuild diverges from the published artifact.
+Artifact sha256: 0746f5f8d406af344fd547f1c8daa5f5c33dbc293bb8d6a16d80b4bb88f59372
+Artifact sha512: 2de05c69d152a8582a4d8f1f02233cae5927baaa35f8797e4b0745f33e6b3c7239b9a54b719b0582b0b6c5b4bbc86d2e1e226c3e9854e4e5be9c5e349c704961
+Stabilizer set: sha256:cadb3a863443a703bcfb7bd35e08581cee2a2d54c78b661bd2c43e483120bdbb
+Record: sha256:b53d0d1e396bd74028087fee9e6159bac5af4ec650ae1c6f3395df1f393bc97d, leaf 11 of github.com/scovetta/trigon-test1, logged 2026-10-02T14:30:58Z.
+Dispute it: https://github.com/scovetta/trigon-test1/issues
+Check it yourself: trigon verify-attestation --lookup sha256:0746f5f8d406af344fd547f1c8daa5f5c33dbc293bb8d6a16d80b4bb88f59372 --predicate https://trigon.dev/divergence/v2 --origin github.com/scovetta/trigon-test1 --rerun-comparison --upstream &lt;file&gt;</content>
+  </entry>
+</feed>
