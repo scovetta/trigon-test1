@@ -1,0 +1,10 @@
+{
+  "artifact": "3c58c7fc4c30035cdabb0b33e81d8e048935e134469491767cbaf89bd64c9b36",
+  "refuse_url": "https://registry.npmjs.org/pump/-/pump-3.0.4.tgz",
+  "members": [],
+  "filtered_out": 10,
+  "withhold": {
+    "project": "pump",
+    "version": "3.0.4"
+  }
+}
