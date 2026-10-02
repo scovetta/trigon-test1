@@ -1,0 +1,46 @@
+name: pages
+
+# Publishes the results site `trigon publish` writes into site/, to GitHub Pages. It builds
+# nothing: the pages link this repository's records/, evidence/, log/ and keys/ relatively, so
+# those directories are copied beside site/'s files, and the result is uploaded as it is.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# One deployment at a time; a newer push supersedes one still waiting.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-24.04
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Assemble the site beside the files it links
+        run: |
+          if [ ! -f site/index.html ]; then
+            echo "no site/index.html: set site = true under [publish] and publish once" >&2
+            exit 1
+          fi
+          mkdir _site
+          cp -R site/. _site/
+          for d in records evidence log keys; do
+            if [ -d "$d" ]; then cp -R "$d" _site/; fi
+          done
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - id: deployment
+        uses: actions/deploy-pages@v4
