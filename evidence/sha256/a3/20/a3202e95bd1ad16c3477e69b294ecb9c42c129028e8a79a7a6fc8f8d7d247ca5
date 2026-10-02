@@ -1,0 +1,10 @@
+{
+  "artifact": "aff3730d91b7b1e143822956d14608f563163cf11b9d0ae602df1fe1e430fdfb",
+  "refuse_url": "https://registry.npmjs.org/wrappy/-/wrappy-1.0.2.tgz",
+  "members": [],
+  "filtered_out": 4,
+  "withhold": {
+    "project": "wrappy",
+    "version": "1.0.2"
+  }
+}
