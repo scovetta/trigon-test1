@@ -1,0 +1,10 @@
+{
+  "artifact": "3961374aa161e6fed80d6f4b6aaf2fb7eafd2c9e5be34e865b375f0114dd099c",
+  "refuse_url": "https://registry.npmjs.org/graceful-fs/-/graceful-fs-4.2.11.tgz",
+  "members": [],
+  "filtered_out": 7,
+  "withhold": {
+    "project": "graceful-fs",
+    "version": "4.2.11"
+  }
+}
