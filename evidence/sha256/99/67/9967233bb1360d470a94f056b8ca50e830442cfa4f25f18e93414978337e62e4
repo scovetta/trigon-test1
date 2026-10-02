@@ -1,0 +1,10 @@
+{
+  "artifact": "5d181804516c4a693a384272a7bd0e42d17e0d4b301ccfbe408669ccafdcb3e8",
+  "refuse_url": "https://registry.npmjs.org/safe-buffer/-/safe-buffer-5.2.1.tgz",
+  "members": [],
+  "filtered_out": 5,
+  "withhold": {
+    "project": "safe-buffer",
+    "version": "5.2.1"
+  }
+}
