@@ -1,0 +1,10 @@
+{
+  "artifact": "425bf8c725d23bc5ac76bcedd10d9cdbbd6354c7273dd7def44417cfbca8889b",
+  "refuse_url": "https://registry.npmjs.org/process-nextick-args/-/process-nextick-args-2.0.1.tgz",
+  "members": [],
+  "filtered_out": 4,
+  "withhold": {
+    "project": "process-nextick-args",
+    "version": "2.0.1"
+  }
+}
