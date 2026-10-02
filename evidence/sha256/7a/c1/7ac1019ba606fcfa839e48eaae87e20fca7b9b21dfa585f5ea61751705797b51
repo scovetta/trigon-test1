@@ -1,0 +1,337 @@
+STEP 1/11: FROM 8140c60a950cfd34a3de84aef6710087e412d4026f03432b8d649e3c01d03321
+STEP 2/11: COPY setup.sh /trigon/setup.sh
+--> 8fe2d8f99a2a
+STEP 3/11: RUN /bin/sh /trigon/setup.sh
+time="2026-10-02T14:09:20-04:00" level=warning msg="can't raise ambient capability CAP_CHOWN: operation not permitted"
+time="2026-10-02T14:09:20-04:00" level=warning msg="can't raise ambient capability CAP_DAC_OVERRIDE: operation not permitted"
+time="2026-10-02T14:09:20-04:00" level=warning msg="can't raise ambient capability CAP_FOWNER: operation not permitted"
+time="2026-10-02T14:09:20-04:00" level=warning msg="can't raise ambient capability CAP_FSETID: operation not permitted"
+time="2026-10-02T14:09:20-04:00" level=warning msg="can't raise ambient capability CAP_KILL: operation not permitted"
+time="2026-10-02T14:09:20-04:00" level=warning msg="can't raise ambient capability CAP_NET_BIND_SERVICE: operation not permitted"
+time="2026-10-02T14:09:20-04:00" level=warning msg="can't raise ambient capability CAP_SETFCAP: operation not permitted"
+time="2026-10-02T14:09:20-04:00" level=warning msg="can't raise ambient capability CAP_SETGID: operation not permitted"
+time="2026-10-02T14:09:20-04:00" level=warning msg="can't raise ambient capability CAP_SETPCAP: operation not permitted"
+time="2026-10-02T14:09:20-04:00" level=warning msg="can't raise ambient capability CAP_SETUID: operation not permitted"
+time="2026-10-02T14:09:20-04:00" level=warning msg="can't raise ambient capability CAP_SYS_CHROOT: operation not permitted"
+base image carries: ca-certificates git python3 python3-venv
+--> 39943c10794e
+STEP 4/11: COPY src /src
+--> 96204737d7d4
+STEP 5/11: RUN mkdir -p /out
+time="2026-10-02T14:09:21-04:00" level=warning msg="can't raise ambient capability CAP_CHOWN: operation not permitted"
+time="2026-10-02T14:09:21-04:00" level=warning msg="can't raise ambient capability CAP_DAC_OVERRIDE: operation not permitted"
+time="2026-10-02T14:09:21-04:00" level=warning msg="can't raise ambient capability CAP_FOWNER: operation not permitted"
+time="2026-10-02T14:09:21-04:00" level=warning msg="can't raise ambient capability CAP_FSETID: operation not permitted"
+time="2026-10-02T14:09:21-04:00" level=warning msg="can't raise ambient capability CAP_KILL: operation not permitted"
+time="2026-10-02T14:09:21-04:00" level=warning msg="can't raise ambient capability CAP_NET_BIND_SERVICE: operation not permitted"
+time="2026-10-02T14:09:21-04:00" level=warning msg="can't raise ambient capability CAP_SETFCAP: operation not permitted"
+time="2026-10-02T14:09:21-04:00" level=warning msg="can't raise ambient capability CAP_SETGID: operation not permitted"
+time="2026-10-02T14:09:21-04:00" level=warning msg="can't raise ambient capability CAP_SETPCAP: operation not permitted"
+time="2026-10-02T14:09:21-04:00" level=warning msg="can't raise ambient capability CAP_SETUID: operation not permitted"
+time="2026-10-02T14:09:21-04:00" level=warning msg="can't raise ambient capability CAP_SYS_CHROOT: operation not permitted"
+--> 96d3f6926743
+STEP 6/11: WORKDIR /src
+--> 9e9388a811f1
+STEP 7/11: COPY source.sh /trigon/source.sh
+--> 99898c9ff44e
+STEP 8/11: RUN /bin/sh /trigon/source.sh
+time="2026-10-02T14:09:22-04:00" level=warning msg="can't raise ambient capability CAP_CHOWN: operation not permitted"
+time="2026-10-02T14:09:22-04:00" level=warning msg="can't raise ambient capability CAP_DAC_OVERRIDE: operation not permitted"
+time="2026-10-02T14:09:22-04:00" level=warning msg="can't raise ambient capability CAP_FOWNER: operation not permitted"
+time="2026-10-02T14:09:22-04:00" level=warning msg="can't raise ambient capability CAP_FSETID: operation not permitted"
+time="2026-10-02T14:09:22-04:00" level=warning msg="can't raise ambient capability CAP_KILL: operation not permitted"
+time="2026-10-02T14:09:22-04:00" level=warning msg="can't raise ambient capability CAP_NET_BIND_SERVICE: operation not permitted"
+time="2026-10-02T14:09:22-04:00" level=warning msg="can't raise ambient capability CAP_SETFCAP: operation not permitted"
+time="2026-10-02T14:09:22-04:00" level=warning msg="can't raise ambient capability CAP_SETGID: operation not permitted"
+time="2026-10-02T14:09:22-04:00" level=warning msg="can't raise ambient capability CAP_SETPCAP: operation not permitted"
+time="2026-10-02T14:09:22-04:00" level=warning msg="can't raise ambient capability CAP_SETUID: operation not permitted"
+time="2026-10-02T14:09:22-04:00" level=warning msg="can't raise ambient capability CAP_SYS_CHROOT: operation not permitted"
+HEAD is now at 9eea97d Pre-release
+--> 7f622f47e018
+STEP 9/11: COPY deps.sh /trigon/deps.sh
+--> e77f5dcc90e8
+STEP 10/11: COPY build.sh /build
+--> 2a1d179ba616
+STEP 11/11: ENTRYPOINT ["/bin/sh", "/build"]
+COMMIT trigon-build:93cc2535c848-2452390
+--> d3c55fe8a461
+Successfully tagged localhost/trigon-build:93cc2535c848-2452390
+d3c55fe8a46117aeaf4ef4c69926fd9cf5c26f7b6c3a08bba73ef8c8c978b12d
++ /bin/sh /trigon/deps.sh
+Looking in indexes: http://pypi:****@timewarp:8129/simple
+Collecting build
+  Downloading http://timewarp:8129/-artifact/pypi/2026-01-28T18%3A14%3A54/files.pythonhosted.org/packages/c5/0d/84a4380f930db0010168e0aa7b7a8fed9ba1835a8fbb1472bc6d0201d529/build-1.4.0-py3-none-any.whl
+     - 24.1 kB 3.2 MB/s 0:00:00
+Collecting packaging>=24.0
+  Downloading http://timewarp:8129/-artifact/pypi/2026-01-28T18%3A14%3A54/files.pythonhosted.org/packages/b7/b9/c538f279a4e237a006a2c98387d081e9eb060d203d8ed34467cc0f0b9b53/packaging-26.0-py3-none-any.whl
+     - 74.4 kB 1.8 MB/s 0:00:00
+Collecting pyproject_hooks
+  Downloading http://timewarp:8129/-artifact/pypi/2026-01-28T18%3A14%3A54/files.pythonhosted.org/packages/bd/24/12818598c362d7f300f18e74db45963dbcb85150324092410c8b49405e42/pyproject_hooks-1.2.0-py3-none-any.whl
+     - 10.2 kB ? 0:00:00
+Installing collected packages: pyproject_hooks, packaging, build
+Successfully installed build-1.4.0 packaging-26.0 pyproject_hooks-1.2.0
+trigon-deps-ok
++ echo trigon-deps-ok
++ export PIP_CONSTRAINT=/trigon/deps/constraints.txt
++ /trigon/deps/bin/python3 -m build --sdist
+* Creating isolated environment: venv+pip...
+* Installing packages in isolated environment:
+  - setuptools>=43
+* Getting build dependencies for sdist...
+running egg_info
+creating psutil.egg-info
+writing psutil.egg-info/PKG-INFO
+writing dependency_links to psutil.egg-info/dependency_links.txt
+writing requirements to psutil.egg-info/requires.txt
+writing top-level names to psutil.egg-info/top_level.txt
+writing manifest file 'psutil.egg-info/SOURCES.txt'
+reading manifest file 'psutil.egg-info/SOURCES.txt'
+reading manifest template 'MANIFEST.in'
+adding license file 'LICENSE'
+writing manifest file 'psutil.egg-info/SOURCES.txt'
+* Building sdist...
+running sdist
+running egg_info
+writing psutil.egg-info/PKG-INFO
+writing dependency_links to psutil.egg-info/dependency_links.txt
+writing requirements to psutil.egg-info/requires.txt
+writing top-level names to psutil.egg-info/top_level.txt
+reading manifest file 'psutil.egg-info/SOURCES.txt'
+reading manifest template 'MANIFEST.in'
+adding license file 'LICENSE'
+writing manifest file 'psutil.egg-info/SOURCES.txt'
+running check
+creating psutil-7.2.2
+creating psutil-7.2.2/docs
+creating psutil-7.2.2/docs/_templates
+creating psutil-7.2.2/psutil
+creating psutil-7.2.2/psutil.egg-info
+creating psutil-7.2.2/psutil/arch/aix
+creating psutil-7.2.2/psutil/arch/all
+creating psutil-7.2.2/psutil/arch/bsd
+creating psutil-7.2.2/psutil/arch/freebsd
+creating psutil-7.2.2/psutil/arch/linux
+creating psutil-7.2.2/psutil/arch/netbsd
+creating psutil-7.2.2/psutil/arch/openbsd
+creating psutil-7.2.2/psutil/arch/osx
+creating psutil-7.2.2/psutil/arch/posix
+creating psutil-7.2.2/psutil/arch/sunos
+creating psutil-7.2.2/psutil/arch/windows
+creating psutil-7.2.2/scripts
+creating psutil-7.2.2/scripts/internal
+creating psutil-7.2.2/tests
+copying files to psutil-7.2.2...
+copying .clang-format -> psutil-7.2.2
+copying .dprint.jsonc -> psutil-7.2.2
+copying .gitignore -> psutil-7.2.2
+copying CONTRIBUTING.md -> psutil-7.2.2
+copying CREDITS -> psutil-7.2.2
+copying HISTORY.rst -> psutil-7.2.2
+copying INSTALL.rst -> psutil-7.2.2
+copying LICENSE -> psutil-7.2.2
+copying MANIFEST.in -> psutil-7.2.2
+copying Makefile -> psutil-7.2.2
+copying README.rst -> psutil-7.2.2
+copying SECURITY.md -> psutil-7.2.2
+copying pyproject.toml -> psutil-7.2.2
+copying setup.py -> psutil-7.2.2
+copying docs/.readthedocs.yaml -> psutil-7.2.2/docs
+copying docs/DEVGUIDE.rst -> psutil-7.2.2/docs
+copying docs/DEVNOTES -> psutil-7.2.2/docs
+copying docs/Makefile -> psutil-7.2.2/docs
+copying docs/README -> psutil-7.2.2/docs
+copying docs/STATS.md -> psutil-7.2.2/docs
+copying docs/conf.py -> psutil-7.2.2/docs
+copying docs/index.rst -> psutil-7.2.2/docs
+copying docs/make.bat -> psutil-7.2.2/docs
+copying docs/requirements.txt -> psutil-7.2.2/docs
+copying docs/_templates/layout.html -> psutil-7.2.2/docs/_templates
+copying psutil/__init__.py -> psutil-7.2.2/psutil
+copying psutil/_common.py -> psutil-7.2.2/psutil
+copying psutil/_ntuples.py -> psutil-7.2.2/psutil
+copying psutil/_psaix.py -> psutil-7.2.2/psutil
+copying psutil/_psbsd.py -> psutil-7.2.2/psutil
+copying psutil/_pslinux.py -> psutil-7.2.2/psutil
+copying psutil/_psosx.py -> psutil-7.2.2/psutil
+copying psutil/_psposix.py -> psutil-7.2.2/psutil
+copying psutil/_pssunos.py -> psutil-7.2.2/psutil
+copying psutil/_psutil_aix.c -> psutil-7.2.2/psutil
+copying psutil/_psutil_bsd.c -> psutil-7.2.2/psutil
+copying psutil/_psutil_linux.c -> psutil-7.2.2/psutil
+copying psutil/_psutil_osx.c -> psutil-7.2.2/psutil
+copying psutil/_psutil_sunos.c -> psutil-7.2.2/psutil
+copying psutil/_psutil_windows.c -> psutil-7.2.2/psutil
+copying psutil/_pswindows.py -> psutil-7.2.2/psutil
+copying psutil.egg-info/PKG-INFO -> psutil-7.2.2/psutil.egg-info
+copying psutil.egg-info/SOURCES.txt -> psutil-7.2.2/psutil.egg-info
+copying psutil.egg-info/dependency_links.txt -> psutil-7.2.2/psutil.egg-info
+copying psutil.egg-info/not-zip-safe -> psutil-7.2.2/psutil.egg-info
+copying psutil.egg-info/requires.txt -> psutil-7.2.2/psutil.egg-info
+copying psutil.egg-info/top_level.txt -> psutil-7.2.2/psutil.egg-info
+copying psutil/arch/aix/common.c -> psutil-7.2.2/psutil/arch/aix
+copying psutil/arch/aix/common.h -> psutil-7.2.2/psutil/arch/aix
+copying psutil/arch/aix/ifaddrs.c -> psutil-7.2.2/psutil/arch/aix
+copying psutil/arch/aix/ifaddrs.h -> psutil-7.2.2/psutil/arch/aix
+copying psutil/arch/aix/net_connections.c -> psutil-7.2.2/psutil/arch/aix
+copying psutil/arch/aix/net_connections.h -> psutil-7.2.2/psutil/arch/aix
+copying psutil/arch/aix/net_kernel_structs.h -> psutil-7.2.2/psutil/arch/aix
+copying psutil/arch/all/errors.c -> psutil-7.2.2/psutil/arch/all
+copying psutil/arch/all/init.c -> psutil-7.2.2/psutil/arch/all
+copying psutil/arch/all/init.h -> psutil-7.2.2/psutil/arch/all
+copying psutil/arch/all/pids.c -> psutil-7.2.2/psutil/arch/all
+copying psutil/arch/all/str.c -> psutil-7.2.2/psutil/arch/all
+copying psutil/arch/bsd/cpu.c -> psutil-7.2.2/psutil/arch/bsd
+copying psutil/arch/bsd/disk.c -> psutil-7.2.2/psutil/arch/bsd
+copying psutil/arch/bsd/heap.c -> psutil-7.2.2/psutil/arch/bsd
+copying psutil/arch/bsd/init.c -> psutil-7.2.2/psutil/arch/bsd
+copying psutil/arch/bsd/init.h -> psutil-7.2.2/psutil/arch/bsd
+copying psutil/arch/bsd/net.c -> psutil-7.2.2/psutil/arch/bsd
+copying psutil/arch/bsd/proc.c -> psutil-7.2.2/psutil/arch/bsd
+copying psutil/arch/bsd/proc_utils.c -> psutil-7.2.2/psutil/arch/bsd
+copying psutil/arch/bsd/sys.c -> psutil-7.2.2/psutil/arch/bsd
+copying psutil/arch/freebsd/cpu.c -> psutil-7.2.2/psutil/arch/freebsd
+copying psutil/arch/freebsd/disk.c -> psutil-7.2.2/psutil/arch/freebsd
+copying psutil/arch/freebsd/init.h -> psutil-7.2.2/psutil/arch/freebsd
+copying psutil/arch/freebsd/mem.c -> psutil-7.2.2/psutil/arch/freebsd
+copying psutil/arch/freebsd/pids.c -> psutil-7.2.2/psutil/arch/freebsd
+copying psutil/arch/freebsd/proc.c -> psutil-7.2.2/psutil/arch/freebsd
+copying psutil/arch/freebsd/proc_socks.c -> psutil-7.2.2/psutil/arch/freebsd
+copying psutil/arch/freebsd/sensors.c -> psutil-7.2.2/psutil/arch/freebsd
+copying psutil/arch/freebsd/sys_socks.c -> psutil-7.2.2/psutil/arch/freebsd
+copying psutil/arch/linux/disk.c -> psutil-7.2.2/psutil/arch/linux
+copying psutil/arch/linux/heap.c -> psutil-7.2.2/psutil/arch/linux
+copying psutil/arch/linux/init.h -> psutil-7.2.2/psutil/arch/linux
+copying psutil/arch/linux/mem.c -> psutil-7.2.2/psutil/arch/linux
+copying psutil/arch/linux/net.c -> psutil-7.2.2/psutil/arch/linux
+copying psutil/arch/linux/proc.c -> psutil-7.2.2/psutil/arch/linux
+copying psutil/arch/netbsd/cpu.c -> psutil-7.2.2/psutil/arch/netbsd
+copying psutil/arch/netbsd/disk.c -> psutil-7.2.2/psutil/arch/netbsd
+copying psutil/arch/netbsd/init.h -> psutil-7.2.2/psutil/arch/netbsd
+copying psutil/arch/netbsd/mem.c -> psutil-7.2.2/psutil/arch/netbsd
+copying psutil/arch/netbsd/pids.c -> psutil-7.2.2/psutil/arch/netbsd
+copying psutil/arch/netbsd/proc.c -> psutil-7.2.2/psutil/arch/netbsd
+copying psutil/arch/netbsd/socks.c -> psutil-7.2.2/psutil/arch/netbsd
+copying psutil/arch/openbsd/cpu.c -> psutil-7.2.2/psutil/arch/openbsd
+copying psutil/arch/openbsd/disk.c -> psutil-7.2.2/psutil/arch/openbsd
+copying psutil/arch/openbsd/init.h -> psutil-7.2.2/psutil/arch/openbsd
+copying psutil/arch/openbsd/mem.c -> psutil-7.2.2/psutil/arch/openbsd
+copying psutil/arch/openbsd/pids.c -> psutil-7.2.2/psutil/arch/openbsd
+copying psutil/arch/openbsd/proc.c -> psutil-7.2.2/psutil/arch/openbsd
+copying psutil/arch/openbsd/socks.c -> psutil-7.2.2/psutil/arch/openbsd
+copying psutil/arch/openbsd/users.c -> psutil-7.2.2/psutil/arch/openbsd
+copying psutil/arch/osx/cpu.c -> psutil-7.2.2/psutil/arch/osx
+copying psutil/arch/osx/disk.c -> psutil-7.2.2/psutil/arch/osx
+copying psutil/arch/osx/heap.c -> psutil-7.2.2/psutil/arch/osx
+copying psutil/arch/osx/init.c -> psutil-7.2.2/psutil/arch/osx
+copying psutil/arch/osx/init.h -> psutil-7.2.2/psutil/arch/osx
+copying psutil/arch/osx/mem.c -> psutil-7.2.2/psutil/arch/osx
+copying psutil/arch/osx/net.c -> psutil-7.2.2/psutil/arch/osx
+copying psutil/arch/osx/pids.c -> psutil-7.2.2/psutil/arch/osx
+copying psutil/arch/osx/proc.c -> psutil-7.2.2/psutil/arch/osx
+copying psutil/arch/osx/proc_utils.c -> psutil-7.2.2/psutil/arch/osx
+copying psutil/arch/osx/sensors.c -> psutil-7.2.2/psutil/arch/osx
+copying psutil/arch/osx/sys.c -> psutil-7.2.2/psutil/arch/osx
+copying psutil/arch/posix/init.c -> psutil-7.2.2/psutil/arch/posix
+copying psutil/arch/posix/init.h -> psutil-7.2.2/psutil/arch/posix
+copying psutil/arch/posix/net.c -> psutil-7.2.2/psutil/arch/posix
+copying psutil/arch/posix/pids.c -> psutil-7.2.2/psutil/arch/posix
+copying psutil/arch/posix/proc.c -> psutil-7.2.2/psutil/arch/posix
+copying psutil/arch/posix/sysctl.c -> psutil-7.2.2/psutil/arch/posix
+copying psutil/arch/posix/users.c -> psutil-7.2.2/psutil/arch/posix
+copying psutil/arch/sunos/cpu.c -> psutil-7.2.2/psutil/arch/sunos
+copying psutil/arch/sunos/disk.c -> psutil-7.2.2/psutil/arch/sunos
+copying psutil/arch/sunos/environ.c -> psutil-7.2.2/psutil/arch/sunos
+copying psutil/arch/sunos/init.h -> psutil-7.2.2/psutil/arch/sunos
+copying psutil/arch/sunos/mem.c -> psutil-7.2.2/psutil/arch/sunos
+copying psutil/arch/sunos/net.c -> psutil-7.2.2/psutil/arch/sunos
+copying psutil/arch/sunos/proc.c -> psutil-7.2.2/psutil/arch/sunos
+copying psutil/arch/sunos/sys.c -> psutil-7.2.2/psutil/arch/sunos
+copying psutil/arch/windows/cpu.c -> psutil-7.2.2/psutil/arch/windows
+copying psutil/arch/windows/disk.c -> psutil-7.2.2/psutil/arch/windows
+copying psutil/arch/windows/heap.c -> psutil-7.2.2/psutil/arch/windows
+copying psutil/arch/windows/init.c -> psutil-7.2.2/psutil/arch/windows
+copying psutil/arch/windows/init.h -> psutil-7.2.2/psutil/arch/windows
+copying psutil/arch/windows/mem.c -> psutil-7.2.2/psutil/arch/windows
+copying psutil/arch/windows/net.c -> psutil-7.2.2/psutil/arch/windows
+copying psutil/arch/windows/ntextapi.h -> psutil-7.2.2/psutil/arch/windows
+copying psutil/arch/windows/pids.c -> psutil-7.2.2/psutil/arch/windows
+copying psutil/arch/windows/proc.c -> psutil-7.2.2/psutil/arch/windows
+copying psutil/arch/windows/proc_handles.c -> psutil-7.2.2/psutil/arch/windows
+copying psutil/arch/windows/proc_info.c -> psutil-7.2.2/psutil/arch/windows
+copying psutil/arch/windows/proc_utils.c -> psutil-7.2.2/psutil/arch/windows
+copying psutil/arch/windows/security.c -> psutil-7.2.2/psutil/arch/windows
+copying psutil/arch/windows/sensors.c -> psutil-7.2.2/psutil/arch/windows
+copying psutil/arch/windows/services.c -> psutil-7.2.2/psutil/arch/windows
+copying psutil/arch/windows/socks.c -> psutil-7.2.2/psutil/arch/windows
+copying psutil/arch/windows/sys.c -> psutil-7.2.2/psutil/arch/windows
+copying psutil/arch/windows/wmi.c -> psutil-7.2.2/psutil/arch/windows
+copying scripts/battery.py -> psutil-7.2.2/scripts
+copying scripts/cpu_distribution.py -> psutil-7.2.2/scripts
+copying scripts/disk_usage.py -> psutil-7.2.2/scripts
+copying scripts/fans.py -> psutil-7.2.2/scripts
+copying scripts/free.py -> psutil-7.2.2/scripts
+copying scripts/ifconfig.py -> psutil-7.2.2/scripts
+copying scripts/iotop.py -> psutil-7.2.2/scripts
+copying scripts/killall.py -> psutil-7.2.2/scripts
+copying scripts/meminfo.py -> psutil-7.2.2/scripts
+copying scripts/netstat.py -> psutil-7.2.2/scripts
+copying scripts/nettop.py -> psutil-7.2.2/scripts
+copying scripts/pidof.py -> psutil-7.2.2/scripts
+copying scripts/pmap.py -> psutil-7.2.2/scripts
+copying scripts/procinfo.py -> psutil-7.2.2/scripts
+copying scripts/procsmem.py -> psutil-7.2.2/scripts
+copying scripts/ps.py -> psutil-7.2.2/scripts
+copying scripts/pstree.py -> psutil-7.2.2/scripts
+copying scripts/sensors.py -> psutil-7.2.2/scripts
+copying scripts/temperatures.py -> psutil-7.2.2/scripts
+copying scripts/top.py -> psutil-7.2.2/scripts
+copying scripts/who.py -> psutil-7.2.2/scripts
+copying scripts/winservices.py -> psutil-7.2.2/scripts
+copying scripts/internal/README -> psutil-7.2.2/scripts/internal
+copying scripts/internal/bench_oneshot.py -> psutil-7.2.2/scripts/internal
+copying scripts/internal/bench_oneshot_2.py -> psutil-7.2.2/scripts/internal
+copying scripts/internal/convert_readme.py -> psutil-7.2.2/scripts/internal
+copying scripts/internal/download_wheels.py -> psutil-7.2.2/scripts/internal
+copying scripts/internal/find_broken_links.py -> psutil-7.2.2/scripts/internal
+copying scripts/internal/generate_manifest.py -> psutil-7.2.2/scripts/internal
+copying scripts/internal/git_pre_commit.py -> psutil-7.2.2/scripts/internal
+copying scripts/internal/install-sysdeps.sh -> psutil-7.2.2/scripts/internal
+copying scripts/internal/install_pip.py -> psutil-7.2.2/scripts/internal
+copying scripts/internal/print_access_denied.py -> psutil-7.2.2/scripts/internal
+copying scripts/internal/print_announce.py -> psutil-7.2.2/scripts/internal
+copying scripts/internal/print_api_speed.py -> psutil-7.2.2/scripts/internal
+copying scripts/internal/print_dist.py -> psutil-7.2.2/scripts/internal
+copying scripts/internal/print_downloads.py -> psutil-7.2.2/scripts/internal
+copying scripts/internal/print_hashes.py -> psutil-7.2.2/scripts/internal
+copying scripts/internal/print_sysinfo.py -> psutil-7.2.2/scripts/internal
+copying scripts/internal/print_timeline.py -> psutil-7.2.2/scripts/internal
+copying scripts/internal/purge_installation.py -> psutil-7.2.2/scripts/internal
+copying scripts/internal/test_python2_setup_py.py -> psutil-7.2.2/scripts/internal
+copying tests/README.md -> psutil-7.2.2/tests
+copying tests/__init__.py -> psutil-7.2.2/tests
+copying tests/test_aix.py -> psutil-7.2.2/tests
+copying tests/test_bsd.py -> psutil-7.2.2/tests
+copying tests/test_connections.py -> psutil-7.2.2/tests
+copying tests/test_contracts.py -> psutil-7.2.2/tests
+copying tests/test_heap.py -> psutil-7.2.2/tests
+copying tests/test_linux.py -> psutil-7.2.2/tests
+copying tests/test_memleaks.py -> psutil-7.2.2/tests
+copying tests/test_misc.py -> psutil-7.2.2/tests
+copying tests/test_osx.py -> psutil-7.2.2/tests
+copying tests/test_posix.py -> psutil-7.2.2/tests
+copying tests/test_process.py -> psutil-7.2.2/tests
+copying tests/test_process_all.py -> psutil-7.2.2/tests
+copying tests/test_scripts.py -> psutil-7.2.2/tests
+copying tests/test_sudo.py -> psutil-7.2.2/tests
+copying tests/test_sunos.py -> psutil-7.2.2/tests
+copying tests/test_system.py -> psutil-7.2.2/tests
+copying tests/test_testutils.py -> psutil-7.2.2/tests
+copying tests/test_unicode.py -> psutil-7.2.2/tests
+copying tests/test_windows.py -> psutil-7.2.2/tests
+copying psutil.egg-info/SOURCES.txt -> psutil-7.2.2/psutil.egg-info
+Writing psutil-7.2.2/setup.cfg
+Creating tar archive
+removing 'psutil-7.2.2' (and everything under it)
+Successfully built psutil-7.2.2.tar.gz
++ mkdir -p /out
++ cp -r /src/dist/psutil-7.2.2.tar.gz /out/
