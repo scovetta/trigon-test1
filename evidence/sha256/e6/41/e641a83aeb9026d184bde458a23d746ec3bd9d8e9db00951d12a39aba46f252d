@@ -1,0 +1,10 @@
+{
+  "artifact": "cf51460ba370c698f68b976e514d113497339ba018b6003e8e8eb569c6fccfcf",
+  "refuse_url": "https://registry.npmjs.org/once/-/once-1.4.0.tgz",
+  "members": [],
+  "filtered_out": 4,
+  "withhold": {
+    "project": "once",
+    "version": "1.4.0"
+  }
+}
