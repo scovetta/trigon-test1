@@ -1,0 +1,10 @@
+{
+  "artifact": "6d9c2a6030dc642b77b3a4979dfa82138cdb426d2c0e5b09626ad063e384a309",
+  "refuse_url": "https://registry.npmjs.org/end-of-stream/-/end-of-stream-1.4.5.tgz",
+  "members": [],
+  "filtered_out": 4,
+  "withhold": {
+    "project": "end-of-stream",
+    "version": "1.4.5"
+  }
+}
