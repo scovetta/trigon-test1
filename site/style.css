@@ -1,0 +1,685 @@
+/* Trigon results: the static site `trigon publish` writes to site/. A trimmed copy of
+   docs/web/style.css, with its tokens, its light and dark themes and its outcome colours, and the
+   few rules a page of results needs besides. No fonts, scripts or images from any other host. */
+
+/* ---------------------------------------------------------------------------------------------
+   Tokens. Neutrals are a cool slate (hue near 215). Blue is the structural colour, as it is for
+   the CLI's labels; cyan marks data; green, yellow and red belong to the outcomes and to nothing
+   else, as in crates/trigon/src/style.rs.
+   --------------------------------------------------------------------------------------------- */
+:root {
+  color-scheme: light dark;
+
+  --bg: #f4f6f9;
+  --panel: #e8ecf1;
+  --panel-bar: #dde3ea;
+  --ink: #111923;
+  --ink-2: #36414e;
+  --muted: #55616e;
+  --rule: #cfd6df;
+  --rule-strong: #77838f;
+  --accent: #1c4ea3;
+  --accent-hover: #163f86;
+  --accent-ink: #ffffff;
+  --ident: #0a6273;
+  --ok: #17703a;
+  --warn: #7f5200;
+  --bad: #b3261e;
+  --focus: #1c4ea3;
+
+  --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans",
+    "Liberation Sans", Arial, sans-serif;
+  --mono: ui-monospace, "SFMono-Regular", "SF Mono", "Cascadia Mono", "Segoe UI Mono",
+    "DejaVu Sans Mono", Menlo, Consolas, "Liberation Mono", monospace;
+
+  --fs-xs: 0.8125rem;
+  --fs-sm: 0.875rem;
+  --fs-0: 1.0625rem;
+  --fs-1: 1.3125rem;
+  --fs-2: 1.625rem;
+  --fs-3: 2.0625rem;
+
+  --measure: 65ch;
+  --gutter: clamp(16px, 4vw, 40px);
+  --radius: 6px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0e1319;
+    --panel: #151c25;
+    --panel-bar: #1b2430;
+    --ink: #e4e9ef;
+    --ink-2: #bdc6d1;
+    --muted: #919daa;
+    --rule: #334155;
+    --rule-strong: #5c6c80;
+    --accent: #8cb2fb;
+    --accent-hover: #b0cafd;
+    --accent-ink: #0b1320;
+    --ident: #6ad0e0;
+    --ok: #5fcd88;
+    --warn: #e2b54a;
+    --bad: #f5857b;
+    --focus: #8cb2fb;
+  }
+}
+
+/* ---------------------------------------------------------------------------------------------
+   Base
+   --------------------------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: var(--fs-0);
+  line-height: 1.6;
+  overflow-wrap: break-word;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.2;
+  text-wrap: balance;
+  margin: 0;
+}
+
+h1 {
+  font-size: var(--fs-3);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: var(--fs-2);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+h3 {
+  font-size: var(--fs-1);
+  font-weight: 650;
+  letter-spacing: -0.005em;
+}
+
+p {
+  margin: 0;
+  text-wrap: pretty;
+}
+
+a {
+  color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
+a:hover {
+  color: var(--accent-hover);
+  text-decoration-thickness: 2px;
+}
+
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+code,
+pre {
+  font-family: var(--mono);
+}
+
+p code,
+li code,
+td code,
+th code,
+dd code {
+  font-size: 0.92em;
+  color: var(--ink);
+}
+
+ul,
+ol {
+  margin: 0;
+  padding-left: 1.2em;
+}
+
+.skip {
+  position: absolute;
+  left: var(--gutter);
+  top: -3rem;
+  padding: 0.5rem 0.8rem;
+  background: var(--accent);
+  color: var(--accent-ink);
+  border-radius: var(--radius);
+  z-index: 10;
+}
+
+.skip:focus {
+  top: 0.75rem;
+}
+
+.wrap {
+  max-width: 76rem;
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* ---------------------------------------------------------------------------------------------
+   Header
+   --------------------------------------------------------------------------------------------- */
+.site-head {
+  border-bottom: 1px solid var(--rule);
+}
+
+.site-head .wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 2rem;
+  padding-block: 0.9rem;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: var(--ink);
+  font-weight: 700;
+  font-size: var(--fs-1);
+  letter-spacing: -0.01em;
+  text-decoration: none;
+}
+
+.brand:hover {
+  color: var(--ink);
+}
+
+.brand svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  flex: none;
+  color: var(--accent);
+}
+
+.site-nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.25rem;
+  list-style: none;
+  padding: 0;
+  font-size: var(--fs-sm);
+}
+
+.site-nav a {
+  display: inline-block;
+  padding-block: 0.25rem;
+  color: var(--ink-2);
+  text-decoration: none;
+}
+
+.site-nav a:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+/* ---------------------------------------------------------------------------------------------
+   The top of a page: what it is, in a sentence or two.
+   --------------------------------------------------------------------------------------------- */
+.intro {
+  display: grid;
+  gap: 1rem;
+  padding-block: 2.75rem 2.25rem;
+  max-width: 60rem;
+}
+
+.intro .lede {
+  max-width: var(--measure);
+}
+
+.crumbs {
+  font-size: var(--fs-sm);
+  color: var(--muted);
+}
+
+.crumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.5rem;
+  list-style: none;
+  padding: 0;
+}
+
+.crumbs li:not(:last-child)::after {
+  content: "/";
+  margin-left: 0.5rem;
+  color: var(--rule-strong);
+}
+
+.kicker {
+  font-family: var(--mono);
+  font-size: var(--fs-sm);
+  color: var(--muted);
+}
+
+/* ---------------------------------------------------------------------------------------------
+   Sections: the heading holds a narrow left column, and the content the rest.
+   --------------------------------------------------------------------------------------------- */
+.sec {
+  display: grid;
+  grid-template-columns: minmax(0, 14rem) minmax(0, 1fr);
+  gap: 1.25rem 3.5rem;
+  padding-block: 2.75rem;
+  border-top: 1px solid var(--rule);
+}
+
+.sec-head {
+  align-self: start;
+}
+
+.sec-head p {
+  margin-top: 0.6rem;
+  font-size: var(--fs-sm);
+  color: var(--muted);
+}
+
+.sec-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.5rem;
+  min-width: 0;
+}
+
+.prose {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
+  max-width: var(--measure);
+}
+
+.lede {
+  font-size: var(--fs-1);
+  line-height: 1.45;
+  color: var(--ink);
+}
+
+.muted {
+  color: var(--muted);
+}
+
+/* A plain statement set apart by a rule, for the things a reader must not miss. */
+.aside {
+  border-left: 3px solid var(--ink);
+  padding: 0.1rem 0 0.1rem 1.1rem;
+  max-width: var(--measure);
+  display: grid;
+  gap: 0.75rem;
+}
+
+.aside.bad {
+  border-left-color: var(--bad);
+}
+
+.aside h3 {
+  font-size: var(--fs-0);
+}
+
+/* ---------------------------------------------------------------------------------------------
+   Outcomes, in the CLI's glyphs and colours
+   --------------------------------------------------------------------------------------------- */
+.ok {
+  color: var(--ok);
+}
+
+.warn {
+  color: var(--warn);
+}
+
+.bad {
+  color: var(--bad);
+}
+
+.oc {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.45rem;
+  font-family: var(--mono);
+  font-weight: 700;
+  font-size: var(--fs-sm);
+  white-space: nowrap;
+}
+
+.oc .glyph {
+  flex: none;
+  width: 1.1em;
+  text-align: center;
+}
+
+.oc.big {
+  font-size: var(--fs-2);
+  gap: 0.6rem;
+}
+
+/* The count of each outcome, divergences first. */
+.tally {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 9rem), 1fr));
+  gap: 0.75rem;
+  list-style: none;
+  padding: 0;
+}
+
+.tally li {
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  padding: 0.8rem 1rem;
+  display: grid;
+  gap: 0.2rem;
+}
+
+.tally .n {
+  font-size: var(--fs-3);
+  font-weight: 750;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+}
+
+.tally .zero {
+  color: var(--muted);
+}
+
+.tally .oc {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+/* ---------------------------------------------------------------------------------------------
+   Terminal panels: commands, scrolled inside their own box.
+   --------------------------------------------------------------------------------------------- */
+.term {
+  margin: 0;
+  min-width: 0;
+}
+
+.term-box {
+  background: var(--panel);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  min-width: 0;
+}
+
+.term-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.25rem 1rem;
+  padding: 0.45rem 1rem;
+  background: var(--panel-bar);
+  border-bottom: 1px solid var(--rule);
+  border-radius: var(--radius) var(--radius) 0 0;
+  font-family: var(--mono);
+  font-size: var(--fs-xs);
+  color: var(--muted);
+}
+
+.term pre {
+  margin: 0;
+  scrollbar-color: var(--rule-strong) var(--panel);
+  padding: 0.9rem 1rem 1rem;
+  overflow-x: auto;
+  font-size: var(--fs-xs);
+  line-height: 1.55;
+  color: var(--ink);
+}
+
+.term pre:focus-visible {
+  outline-offset: -3px;
+}
+
+.term figcaption {
+  margin-top: 0.6rem;
+  font-size: var(--fs-sm);
+  color: var(--muted);
+  max-width: var(--measure);
+}
+
+.t-mut {
+  color: var(--muted);
+}
+
+/* ---------------------------------------------------------------------------------------------
+   Plain data tables, and fields as a list of names and values
+   --------------------------------------------------------------------------------------------- */
+.table-scroll {
+  overflow-x: auto;
+  min-width: 0;
+  scrollbar-color: var(--rule-strong) var(--bg);
+}
+
+.data {
+  border-collapse: collapse;
+  font-size: var(--fs-sm);
+  width: 100%;
+}
+
+.data caption {
+  text-align: left;
+  font-weight: 650;
+  font-size: var(--fs-0);
+  padding-bottom: 0.5rem;
+}
+
+.data th,
+.data td {
+  text-align: left;
+  vertical-align: top;
+  padding: 0.5rem 1rem 0.5rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.data thead th {
+  font-family: var(--mono);
+  font-size: var(--fs-xs);
+  font-weight: 400;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.data tbody th {
+  font-weight: 600;
+}
+
+.data .num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.data .when {
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.fields {
+  margin: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 11rem) minmax(0, 1fr);
+  gap: 0.55rem 1.5rem;
+  font-size: var(--fs-sm);
+}
+
+.fields dt {
+  font-family: var(--mono);
+  font-size: var(--fs-xs);
+  color: var(--muted);
+  padding-top: 0.15rem;
+}
+
+.fields dd {
+  margin: 0;
+  min-width: 0;
+}
+
+.fields dd + dd {
+  grid-column: 2;
+}
+
+/* An artifact of a version: its digest, what is said of it now, and its records. */
+.artifact {
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  padding: 1rem 1.2rem 1.1rem;
+  display: grid;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.artifact-head h3 {
+  font-size: var(--fs-0);
+}
+
+.artifact-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem 1.5rem;
+}
+
+.version + .version {
+  margin-top: 1.5rem;
+}
+
+.version {
+  display: grid;
+  gap: 1rem;
+}
+
+/* ---------------------------------------------------------------------------------------------
+   Footer
+   --------------------------------------------------------------------------------------------- */
+.site-foot {
+  border-top: 1px solid var(--rule);
+  padding-block: 2.25rem 2.75rem;
+  font-size: var(--fs-sm);
+  color: var(--ink-2);
+}
+
+.foot-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 14rem) repeat(auto-fit, minmax(min(100%, 13rem), 1fr));
+  gap: 1.75rem 3.5rem;
+}
+
+.site-foot h2 {
+  font-size: var(--fs-sm);
+  font-family: var(--mono);
+  font-weight: 400;
+  color: var(--muted);
+  margin-bottom: 0.6rem;
+}
+
+.site-foot ul {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 0.1rem;
+}
+
+.site-foot li a {
+  display: inline-block;
+  padding-block: 0.25rem;
+}
+
+.site-foot .brand {
+  font-size: var(--fs-0);
+}
+
+.site-foot .brand svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.foot-line {
+  margin-top: 0.75rem;
+  color: var(--muted);
+}
+
+/* ---------------------------------------------------------------------------------------------
+   Narrow screens
+   --------------------------------------------------------------------------------------------- */
+@media (max-width: 860px) {
+  .sec {
+    grid-template-columns: minmax(0, 1fr);
+    padding-block: 2.25rem;
+  }
+
+  .foot-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .lede {
+    font-size: var(--fs-0);
+  }
+
+  h1 {
+    font-size: var(--fs-2);
+  }
+
+  .fields {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.15rem;
+  }
+
+  .fields dd + dd {
+    grid-column: 1;
+  }
+
+  .fields dd {
+    margin-bottom: 0.5rem;
+  }
+
+  .data th,
+  .data td {
+    padding-right: 0.6rem;
+  }
+}
+
+/* An identifier never breaks at its hyphens. Below 360px a long one may wrap rather than overflow. */
+@media (min-width: 360px) {
+  :is(p, li, dd, td, th) code {
+    white-space: nowrap;
+  }
+}
+
+/* A digest, a URL or a purl is one long word, and may break anywhere rather than overflow. */
+code.long {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  a {
+    transition: color 120ms ease;
+  }
+}
