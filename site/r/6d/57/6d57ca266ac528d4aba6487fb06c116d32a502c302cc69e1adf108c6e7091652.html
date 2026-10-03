@@ -30,6 +30,43 @@
 <p class="lede">Once both were stabilized, the rebuild and the published artifact are identical, and every stabilizer that changed anything ships with Trigon and is no riskier than metadata.</p>
 <p>Nothing supersedes this record. What the log says of the artifact now: <span class="oc ok"><span class="glyph" aria-hidden="true">&#x2714;&#xFE0E;</span>normalized</span></p>
 </section>
+<section class="sec" id="close" aria-labelledby="close-title">
+<div class="sec-head"><h2 id="close-title">How close</h2><p>How the rebuild compares with the published artifact: in a sentence, step by step, then stabilizer by stabilizer and file by file.</p></div>
+<div class="sec-body">
+<p class="close-said">All 6 files are the same once stabilized. The stabilizers evened out differences in file timestamps (6 files), permissions (6 files) and file owners (6 files).</p>
+<div class="aside"><p>File-level detail is not available for this record: it carries no member detail, the document that says what differed before stabilizing and quotes the contents that differ. It was signed before Trigon built one, or where both artifacts were not at hand. What follows is from its comparison report.</p></div>
+<ol class="ladder">
+<li><span class="step differs" aria-hidden="true">&#x2260;</span><span>The published and rebuilt files differ as bytes: 2246 bytes and 2214 bytes.</span></li>
+<li><span class="step differs" aria-hidden="true">&#x2260;</span><span>Decompressed, the archives inside them still differ.</span></li>
+<li><span class="step same ok" aria-hidden="true">=</span><span>After stabilizing, they are identical: every difference is one a stabilizer below evens out.</span></li>
+</ol>
+<h3 class="sub">What the stabilizers did</h3>
+<p>A stabilizer evens out one kind of difference that says nothing about the code, on both sides, before they are compared again. Its tier says how much it may disturb, from least to most: <code>structural</code> reorders or reframes an archive, or leaves out a signature or checksum computed over its files; <code>metadata</code> rewrites fields that are not a file's contents, such as timestamps and permissions; <code>content</code> rewrites bytes inside a file; <code>lossy</code> leaves content out. The riskier its tier, the more a reader should check what it did.</p>
+<div class="table-scroll"><table class="data ledger">
+<thead><tr><th scope="col">stabilizer</th><th scope="col">what it evens out</th><th scope="col">risk</th><th scope="col" class="num">entries rewritten (both sides)</th></tr></thead>
+<tbody>
+<tr><th scope="row"><code>gzip-meta-v2</code></th><td>clears the gzip header: when it was compressed, on which system, and the file name</td><td class="risk"><code>metadata</code></td><td class="num entries">2</td></tr>
+<tr><th scope="row"><code>tar-entry-order-v2</code></th><td>puts the files of a tar archive in name order</td><td class="risk"><code>structural</code></td><td class="num entries">12</td></tr>
+<tr><th scope="row"><code>tar-mode</code></th><td>sets every file&#39;s permissions in a tar archive to one value</td><td class="risk"><code>metadata</code></td><td class="num entries">12</td></tr>
+<tr><th scope="row"><code>tar-owners</code></th><td>clears the owner and group, names and ids, of every file in a tar archive</td><td class="risk"><code>metadata</code></td><td class="num entries">6</td></tr>
+<tr><th scope="row"><code>tar-time</code></th><td>sets every file&#39;s timestamps in a tar archive to one value</td><td class="risk"><code>metadata</code></td><td class="num entries">12</td></tr>
+</tbody>
+</table></div>
+<p class="muted">Entries are counted on both sides together, whether or not a value already matched: a pass that rewrote the timestamps of 10 files on each side rewrote 20.</p>
+<h3 class="sub">File by file</h3>
+<div class="table-scroll"><table class="data files">
+<thead><tr><th scope="col">file</th><th scope="col">after stabilizing</th><th scope="col">size</th><th scope="col">what the stabilizers did</th></tr></thead>
+<tbody>
+<tr><th scope="row"><code class="long">package/History.md</code></th><td class="status">the same</td><td class="num size">282 bytes</td><td><ul class="what"><li>mode evened out by <code>tar-mode</code></li><li>timestamp evened out by <code>tar-time</code></li><li>access time evened out by <code>tar-time</code></li><li>owner id evened out by <code>tar-owners</code></li></ul></td></tr>
+<tr><th scope="row"><code class="long">package/LICENSE</code></th><td class="status">the same</td><td class="num size">1102 bytes</td><td><ul class="what"><li>mode evened out by <code>tar-mode</code></li><li>timestamp evened out by <code>tar-time</code></li><li>access time evened out by <code>tar-time</code></li><li>group id evened out by <code>tar-owners</code></li><li>owner id evened out by <code>tar-owners</code></li></ul></td></tr>
+<tr><th scope="row"><code class="long">package/README.md</code></th><td class="status">the same</td><td class="num size">1666 bytes</td><td><ul class="what"><li>mode evened out by <code>tar-mode</code></li><li>timestamp evened out by <code>tar-time</code></li><li>access time evened out by <code>tar-time</code></li><li>group id evened out by <code>tar-owners</code></li><li>owner id evened out by <code>tar-owners</code></li></ul></td></tr>
+<tr><th scope="row"><code class="long">package/browser.js</code></th><td class="status">the same</td><td class="num size">1614 bytes</td><td><ul class="what"><li>mode evened out by <code>tar-mode</code></li><li>timestamp evened out by <code>tar-time</code></li><li>access time evened out by <code>tar-time</code></li><li>group id evened out by <code>tar-owners</code></li><li>owner id evened out by <code>tar-owners</code></li></ul></td></tr>
+<tr><th scope="row"><code class="long">package/node.js</code></th><td class="status">the same</td><td class="num size">123 bytes</td><td><ul class="what"><li>mode evened out by <code>tar-mode</code></li><li>timestamp evened out by <code>tar-time</code></li><li>access time evened out by <code>tar-time</code></li><li>group id evened out by <code>tar-owners</code></li><li>owner id evened out by <code>tar-owners</code></li></ul></td></tr>
+<tr><th scope="row"><code class="long">package/package.json</code></th><td class="status">the same</td><td class="num size">694 bytes</td><td><ul class="what"><li>mode evened out by <code>tar-mode</code></li><li>timestamp evened out by <code>tar-time</code></li><li>access time evened out by <code>tar-time</code></li><li>group id evened out by <code>tar-owners</code></li><li>owner id evened out by <code>tar-owners</code></li></ul></td></tr>
+</tbody>
+</table></div>
+</div>
+</section>
 <section class="sec" id="artifact" aria-labelledby="artifact-title">
 <div class="sec-head"><h2 id="artifact-title">The artifact</h2><p>What the record is about, as the log&#39;s leaf names it. Look it up by any of these digests.</p></div>
 <div class="sec-body">

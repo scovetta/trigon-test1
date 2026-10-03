@@ -3,10 +3,26 @@
   <id>ni:///sha-256;VjTmJJoHoST4YCOTBBHzRhAQC7LM_T6d0iIjEn28FkM</id>
   <title>Trigon divergences: github.com/scovetta/trigon-test1</title>
   <subtitle>The most recent 200 divergences published to this evidence repository, newest first. Each is a claim that a package does not match its source, with where to dispute it; the log holds every one, and this feed is regenerated from it.</subtitle>
-  <updated>2026-10-02T18:10:34Z</updated>
+  <updated>2026-10-03T12:03:34Z</updated>
   <author><name>trigon publish</name></author>
   <generator>trigon</generator>
   <link rel="self" href="divergences.atom"/>
+  <entry>
+    <id>ni:///sha-256;ACX5IaVJTehIXpICgWruIcZG03nQ-rz7tH9Q1rHQt0M</id>
+    <title>divergent: pkg:pypi/psutil@7.2.1</title>
+    <published>2026-10-03T12:03:34Z</published>
+    <updated>2026-10-03T12:03:34Z</updated>
+    <link rel="alternate" type="application/json" href="../records/00/25/0025f921a5494de8485e9202816aee21c646d379d0fabcfbb47f50d6b1d0b743.json"/>
+    <link rel="related" href="https://github.com/scovetta/trigon-test1/issues" title="Where to dispute it"/>
+    <category term="divergent"/>
+    <content type="text">Trigon rebuilt pkg:pypi/psutil@7.2.1 from its source, and the rebuild diverges from the published artifact.
+Artifact sha256: f7583aec590485b43ca601dd9cea0dcd65bd7bb21d30ef4ddbf4ea6b5ed1bdd3
+Artifact sha512: d9b0b3d55301cb37017875685b4a990c0adaf2f2fb69a2893b4bcd7deeb81a1c141c6ddb1e26c45717f20aa9875cd66b20229d24f7b3687806478cbb4ee83ac5
+Stabilizer set: sha256:cadb3a863443a703bcfb7bd35e08581cee2a2d54c78b661bd2c43e483120bdbb
+Record: sha256:0025f921a5494de8485e9202816aee21c646d379d0fabcfbb47f50d6b1d0b743, leaf 13 of github.com/scovetta/trigon-test1, logged 2026-10-03T12:03:34Z.
+Dispute it: https://github.com/scovetta/trigon-test1/issues
+Check it yourself: trigon verify-attestation --lookup sha256:f7583aec590485b43ca601dd9cea0dcd65bd7bb21d30ef4ddbf4ea6b5ed1bdd3 --predicate https://trigon.dev/divergence/v2 --origin github.com/scovetta/trigon-test1 --rerun-comparison --upstream &lt;file&gt;</content>
+  </entry>
   <entry>
     <id>ni:///sha-256;8b12-b5glr7N4HD4rNk4tu6_MZQPswQJq5E1ARhKFxI</id>
     <title>divergent: pkg:pypi/psutil@7.2.2</title>

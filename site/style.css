@@ -26,6 +26,12 @@
   --warn: #7f5200;
   --bad: #b3261e;
   --focus: #1c4ea3;
+  /* Behind a removed or added line, and a byte that differs: the outcome colours, washed out;
+     and, stronger, behind the part of a changed line that differs from its counterpart. */
+  --ok-wash: #e2f1e7;
+  --bad-wash: #f9e3e1;
+  --ok-mark: #b4dcc1;
+  --bad-mark: #f0bcb6;
 
   --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans",
     "Liberation Sans", Arial, sans-serif;
@@ -62,6 +68,10 @@
     --warn: #e2b54a;
     --bad: #f5857b;
     --focus: #8cb2fb;
+    --ok-wash: #16281c;
+    --bad-wash: #2e1918;
+    --ok-mark: #23553a;
+    --bad-mark: #6a2a25;
   }
 }
 
@@ -570,6 +580,268 @@ ol {
 }
 
 /* ---------------------------------------------------------------------------------------------
+   How close: a record's summary, its three steps, the ledger, file by file, and the excerpts of
+   contents that differ. The diff and the hex rows are `trigon serve`'s, in the site's tokens.
+   --------------------------------------------------------------------------------------------- */
+.close-said {
+  font-size: var(--fs-1);
+  line-height: 1.45;
+  max-width: var(--measure);
+}
+
+.close-line {
+  max-width: var(--measure);
+}
+
+.close-phrase {
+  display: block;
+  margin-top: 0.15rem;
+  font-size: var(--fs-xs);
+  color: var(--muted);
+}
+
+h3.sub {
+  font-size: var(--fs-0);
+  margin-top: 0.5rem;
+}
+
+.member h4 {
+  font-size: var(--fs-sm);
+  font-weight: 650;
+  margin: 0;
+}
+
+.ladder {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 0.45rem;
+  max-width: var(--measure);
+}
+
+.ladder li {
+  display: grid;
+  grid-template-columns: 1.6rem minmax(0, 1fr);
+  gap: 0.6rem;
+  align-items: baseline;
+}
+
+.step {
+  font-family: var(--mono);
+  font-weight: 700;
+  text-align: center;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  color: var(--muted);
+}
+
+.step.ok {
+  color: var(--ok);
+  border-color: currentColor;
+}
+
+.step.bad {
+  color: var(--bad);
+  border-color: currentColor;
+}
+
+.facts {
+  display: grid;
+  gap: 0.3rem;
+  max-width: var(--measure);
+}
+
+/* What differs about one file, published against rebuilt: a value is anyone's bytes, and may
+   break anywhere rather than widen the table. */
+.what {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 0.15rem;
+  overflow-wrap: anywhere;
+}
+
+.files th[scope="row"] {
+  max-width: 22rem;
+}
+
+details.more > summary {
+  cursor: pointer;
+  color: var(--accent);
+  font-size: var(--fs-sm);
+  padding-block: 0.25rem;
+}
+
+details.more[open] > summary {
+  margin-bottom: 0.5rem;
+}
+
+.member {
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  padding: 0.9rem 1rem 1rem;
+  display: grid;
+  gap: 0.6rem;
+  min-width: 0;
+}
+
+.cut-notes {
+  font-size: var(--fs-sm);
+  color: var(--muted);
+}
+
+/* A text excerpt. A line of somebody else's file wraps inside its box, at a space where it can and
+   anywhere in a run too long for the box, so no line can make the page scroll sideways. */
+.diff {
+  font-family: var(--mono);
+  font-size: var(--fs-xs);
+  line-height: 1.5;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  background: var(--panel);
+  min-width: 0;
+}
+
+.hunk-head {
+  padding: 0.2rem 0.7rem;
+  color: var(--muted);
+  background: var(--panel-bar);
+  border-bottom: 1px solid var(--rule);
+}
+
+.diff .hunk-head:not(:first-child) {
+  border-top: 1px solid var(--rule);
+}
+
+.dl {
+  display: grid;
+  grid-template-columns: 1rem minmax(0, 1fr);
+  gap: 0.4rem;
+  padding: 0 0.7rem;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+/* A range in a hunk's heading wraps whole, or not at all. */
+.hunk-head .range {
+  white-space: nowrap;
+}
+
+.dl .dm {
+  color: var(--muted);
+}
+
+.dl.removed {
+  background: var(--bad-wash);
+}
+
+.dl.removed .dm {
+  color: var(--bad);
+}
+
+.dl.added {
+  background: var(--ok-wash);
+}
+
+.dl.added .dm {
+  color: var(--ok);
+}
+
+/* Where a long line is shown in part. */
+.elide {
+  color: var(--muted);
+  font-weight: 700;
+}
+
+/* The part of a changed line that differs from the line it changed into or from. */
+.dl.removed .dd {
+  background: var(--bad-mark);
+  border-radius: 2px;
+}
+
+.dl.added .dd {
+  background: var(--ok-mark);
+  border-radius: 2px;
+}
+
+/* A control or text-direction character of an excerpt, named rather than shown. */
+.ctl {
+  color: var(--muted);
+  font-size: 0.85em;
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  padding: 0 0.15em;
+}
+
+/* A binary excerpt: rows of sixteen bytes, a row the two share once, and a row that differs as
+   its published copy over its rebuilt one, the bytes that differ marked on both. */
+.hex {
+  font-family: var(--mono);
+  font-size: var(--fs-xs);
+  line-height: 1.5;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  background: var(--panel);
+  overflow-x: auto;
+  scrollbar-color: var(--rule-strong) var(--panel);
+  padding-bottom: 0.3rem;
+}
+
+.hex-head {
+  padding: 0.2rem 0.7rem;
+  margin-bottom: 0.3rem;
+  color: var(--muted);
+  background: var(--panel-bar);
+  border-bottom: 1px solid var(--rule);
+}
+
+.hex-row {
+  display: flex;
+  gap: 0.9rem;
+  padding: 0 0.7rem;
+  white-space: pre;
+  width: max-content;
+  min-width: 100%;
+}
+
+.hex-row.added {
+  margin-bottom: 0.35rem;
+}
+
+.hex-off {
+  color: var(--muted);
+}
+
+.hex-row.removed .hex-mark {
+  color: var(--bad);
+}
+
+.hex-row.added .hex-mark {
+  color: var(--ok);
+}
+
+.hex-a {
+  color: var(--ink-2);
+}
+
+.hd {
+  background: var(--bad-wash);
+  color: var(--bad);
+  font-weight: 700;
+  border-radius: 2px;
+}
+
+/* On the rebuilt row, in the colour of an added line. */
+.hex-row.added .hd {
+  background: var(--ok-wash);
+  color: var(--ok);
+}
+
+.hex-row.same .hex-b {
+  color: var(--ink-2);
+}
+
+/* ---------------------------------------------------------------------------------------------
    Footer
    --------------------------------------------------------------------------------------------- */
 .site-foot {
@@ -658,6 +930,124 @@ ol {
   .data th,
   .data td {
     padding-right: 0.6rem;
+  }
+
+  /* The offset is in the window's heading, and the text column is the bytes again: without them,
+     and in a smaller face, a row of sixteen bytes fits a phone. */
+  .hex-off,
+  .hex-a {
+    display: none;
+  }
+
+  .hex {
+    font-size: 0.7rem;
+  }
+
+  .hex-row {
+    gap: 0.5rem;
+    padding: 0 0.4rem;
+  }
+
+  .member {
+    border: 0;
+    padding: 0;
+  }
+
+  /* A file's row, and a stabilizer's, as a short block each: the name, then the rest. */
+  :is(.files, .ledger) thead {
+    display: none;
+  }
+
+  :is(.files, .ledger),
+  :is(.files, .ledger) :is(tbody, tr, th, td) {
+    display: block;
+  }
+
+  :is(.files, .ledger) tr {
+    border-bottom: 1px solid var(--rule);
+    padding-block: 0.55rem;
+  }
+
+  :is(.files, .ledger) :is(th, td) {
+    border: 0;
+    padding: 0 0 0.15rem;
+  }
+
+  :is(.files, .ledger) td.num {
+    text-align: left;
+  }
+
+  .files td.status,
+  .files td.size,
+  .ledger td.risk,
+  .ledger td.entries {
+    display: inline-block;
+    margin-right: 1rem;
+  }
+
+  /* Each cell says what it is, the heading above it being hidden. */
+  .files td.status::before {
+    content: "after stabilizing: ";
+    color: var(--muted);
+  }
+
+  .files td.size::before {
+    content: "size ";
+    color: var(--muted);
+  }
+
+  .ledger td.here::before {
+    content: "evened out here: ";
+    color: var(--muted);
+  }
+
+  .ledger td.risk::before {
+    content: "risk ";
+    color: var(--muted);
+  }
+
+  .ledger td.entries::before {
+    content: "entries rewritten ";
+    color: var(--muted);
+  }
+
+  .files th[scope="row"] {
+    max-width: none;
+  }
+
+  /* The front page's tables, a block a row: the package first, then each cell under the name
+     of its column, so the outcome and how close never leave the screen. */
+  .stack thead {
+    display: none;
+  }
+
+  .stack,
+  .stack :is(caption, tbody, tr, th, td) {
+    display: block;
+  }
+
+  .stack tr {
+    border-bottom: 1px solid var(--rule);
+    padding-block: 0.55rem;
+  }
+
+  .stack :is(th, td) {
+    border: 0;
+    padding: 0 0 0.15rem;
+  }
+
+  .stack td.num {
+    text-align: left;
+  }
+
+  .stack td[data-label]::before {
+    content: attr(data-label) " ";
+    color: var(--muted);
+  }
+
+  /* A cell that holds the phrase alone keeps it beside its name. */
+  .stack td[data-label="how close"] .close-phrase {
+    display: inline;
   }
 }
 
